@@ -54,7 +54,10 @@ router.post('/short_to_long', (req, res) => {
   shortURL = shortURL.slice(-5)
 
   // 取得網頁應用程式的網域網址
-  const mainURL = req.rawHeaders[17] + '/'
+  let mainURL = req.rawHeaders[17] + '/'
+  if (mainURL !== 'http://localhost:3000/') {
+    mainURL = 'https://ac-s2-3-a14-url-shortener.herokuapp.com/'
+  }
 
   UrlRecord.find()
     .lean()
