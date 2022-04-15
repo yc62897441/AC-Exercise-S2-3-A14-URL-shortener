@@ -1,0 +1,27 @@
+<form action="/switch/long_to_short" method="post">
+  <h2>產生短網址</h2>
+  <div class="mb-3" style="min-width: 480px">
+    <label for="longURL" class="form-label fw-bolder" style="font-size: 1.2em">原始網址</label>
+    <input type="text" class="form-control" id="longURL" placeholder="請輸入網址，如:https://www.google.com.tw" name="longURL"
+      {{#if longURL}}value="{{longURL}}" {{/if}} required>
+  </div>
+  <div class="mb-3" style="min-width: 480px">
+    <label class="form-label fw-bolder" style="font-size: 1.2em">短網址</label>
+    <input type="text" class="form-control" disabled {{#if shortURL}}value="{{mainURL}}{{shortURL}}" {{/if}}>
+  </div>
+  <button type="submit" class="btn btn-primary">產生短網址</button>
+</form>
+
+<form action="/switch/short_to_long" method="post" class="mt-5">
+  <h2>還原網址</h2>
+  <div class="mb-3" style="min-width: 480px">
+    <label for="shortURL" class="form-label fw-bolder" style="font-size: 1.2em">短網址</label>
+    <input type="text" class="form-control" id="shortURL" placeholder="請輸入短網址，如:A8reH" name="shortURL" {{#if
+      shortURL}}value="{{mainURL}}{{shortURL}}" {{/if}} required>
+  </div>
+  <div class="mb-3" style="min-width: 480px">
+    <label class="form-label fw-bolder" style="font-size: 1.2em">原始網址</label>
+    <input type="text" class="form-control" {{#if longURL}}value="{{longURL}}" {{/if}} disabled>
+  </div>
+  <button type="submit" class="btn btn-success">還原網址</button>
+</form>
