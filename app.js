@@ -7,7 +7,7 @@ const db = require('./config/mongoose')
 
 // 伺服器參數
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 // view engine
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
