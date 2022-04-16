@@ -3,8 +3,6 @@ Alpha camp Semester2-3 A14 短網址產生器
 
 ![alt text](https://github.com/yc62897441/AC-Exercise-S2-3-A14-URL-shortener/blob/master/images/sample001.jpg?raw=true)
 
-![alt text](https://github.com/yc62897441/AC-Exercise-S2-3-A14-URL-shortener/blob/master/images/sample002.jpg?raw=true)
-
 ## Environment & Prerequisites
 
 nvm: 1.1.9
