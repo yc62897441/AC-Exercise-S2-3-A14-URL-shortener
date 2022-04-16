@@ -30,6 +30,23 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+  <script>
+    const copyButtonShort = document.querySelector('.copyButtonShort')
+    // const copyButtonLong = document.querySelector('.copyButtonLong')
+
+    // How TO - Copy Text to Clipboard
+    // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+
+    copyButtonShort.addEventListener('click', function (event) {
+      let copiedURL = event.target.parentElement.children[1].value
+      navigator.clipboard.writeText(copiedURL)
+    })
+
+    // copyButtonLong.addEventListener('click', function (event) {
+      // let copiedURL = event.target.parentElement.children[1].value
+      // navigator.clipboard.writeText(copiedURL)
+    // })
+  </script>
 </body>
 
 </html>

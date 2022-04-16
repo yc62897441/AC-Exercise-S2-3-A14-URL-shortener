@@ -4,6 +4,7 @@ const router = express.Router()
 const UrlRecord = require('../../models/urlRecord')
 const generateShortURL = require('../../tools/generate_shortURL')
 
+// 產生短網址
 router.post('/long_to_short', (req, res) => {
   // 取得使用者輸入之原始網址
   const longURL = req.body.longURL
@@ -13,6 +14,7 @@ router.post('/long_to_short', (req, res) => {
     mainURL = 'https://ac-s2-3-a14-url-shortener.herokuapp.com/'
   }
 
+  // 讀取資料庫資料
   UrlRecord.find()
     .lean()
     .then(records => {
@@ -41,31 +43,36 @@ router.post('/long_to_short', (req, res) => {
 
         // 儲存新一組之「原始網址-短網址」於資料庫中
         newURLBatch.save()
-          .then(res.render('index', { longURL: longURL, mainURL: mainURL, shortURL: shortURL }))
+          .then(() => {
+            const stateShort = true
+            res.render('index', { stateShort: stateShort, longURL: longURL, mainURL: mainURL, shortURL: shortURL })
+          })
           .catch(error => console.log(error))
       }
     })
     .catch(error => console.log(error))
 })
 
-router.post('/short_to_long', (req, res) => {
-  // 取得使用者輸入之短網址，並取最後末 5 碼
-  let shortURL = req.body.shortURL
-  shortURL = shortURL.slice(-5)
+// 還原原始網址
+// router.post('/short_to_long', (req, res) => {
+//   // 取得使用者輸入之短網址，並取最後末 5 碼
+//   let shortURL = req.body.shortURL
+//   shortURL = shortURL.slice(-5)
 
-  // 取得網頁應用程式的網域網址
-  let mainURL = req.rawHeaders[17] + '/'
-  if (mainURL !== 'http://localhost:3000/') {
-    mainURL = 'https://ac-s2-3-a14-url-shortener.herokuapp.com/'
-  }
+//   // 取得網頁應用程式的網域網址
+//   let mainURL = req.rawHeaders[17] + '/'
+//   if (mainURL !== 'http://localhost:3000/') {
+//     mainURL = 'https://ac-s2-3-a14-url-shortener.herokuapp.com/'
+//   }
 
-  UrlRecord.find()
-    .lean()
-    .then(records => {
-      const longURL = records.find(element => element.shortURL === shortURL).longURL
-      res.render('index', { longURL: longURL, mainURL: mainURL, shortURL: shortURL })
-    })
-    .catch(error => console.log(error))
-})
+//   // 讀取資料庫資料
+//   UrlRecord.find()
+//     .lean()
+//     .then(records => {
+//       const longURL = records.find(element => element.shortURL === shortURL).longURL
+//       res.render('index', { longURL: longURL, mainURL: mainURL, shortURL: shortURL })
+//     })
+//     .catch(error => console.log(error))
+// })
 
 module.exports = router

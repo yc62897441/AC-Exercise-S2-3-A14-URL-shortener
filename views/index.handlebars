@@ -3,25 +3,33 @@
   <div class="mb-3" style="min-width: 480px">
     <label for="longURL" class="form-label fw-bolder" style="font-size: 1.2em">原始網址</label>
     <input type="text" class="form-control" id="longURL" placeholder="請輸入網址，如:https://www.google.com.tw" name="longURL"
-      {{#if longURL}}value="{{longURL}}" {{/if}} required>
+      {{#if longURL}}value="{{longURL}}"{{/if}} required>
   </div>
   <div class="mb-3" style="min-width: 480px">
     <label class="form-label fw-bolder" style="font-size: 1.2em">短網址</label>
-    <input type="text" class="form-control" disabled {{#if shortURL}}value="{{mainURL}}{{shortURL}}" {{/if}}>
+    <input type="text" class="form-control" disabled {{#if shortURL}}value="{{mainURL}}{{shortURL}}"{{/if}}>
+    {{#if shortURL}}
+    <button class="copyButtonShort btn btn-clipboard mt-1" type="button" style="border: 2px solid #E8E8E8;"
+      data-bs-original-title="Copy to clipboard">複製短網址</button>
+    {{/if}}
   </div>
   <button type="submit" class="btn btn-primary">產生短網址</button>
 </form>
 
-<form action="/switch/short_to_long" method="post" class="mt-5">
+{{!-- <form action="/switch/short_to_long" method="post" class="mt-5">
   <h2>還原網址</h2>
   <div class="mb-3" style="min-width: 480px">
     <label for="shortURL" class="form-label fw-bolder" style="font-size: 1.2em">短網址</label>
     <input type="text" class="form-control" id="shortURL" placeholder="請輸入短網址，如:A8reH" name="shortURL" {{#if
-      shortURL}}value="{{mainURL}}{{shortURL}}" {{/if}} required>
+      shortURL}}value="{{mainURL}}{{shortURL}}"{{/if}} required>
   </div>
   <div class="mb-3" style="min-width: 480px">
     <label class="form-label fw-bolder" style="font-size: 1.2em">原始網址</label>
-    <input type="text" class="form-control" {{#if longURL}}value="{{longURL}}" {{/if}} disabled>
+    <input type="text" class="form-control" disabled {{#if longURL}}value="{{longURL}}"{{/if}}>
+    {{#if longURL}}
+    <button class="copyButtonLong btn btn-clipboard mt-1" type="button" style="border: 2px solid #E8E8E8;"
+      data-bs-original-title="Copy to clipboard">複製原始網址</button>
+    {{/if}}
   </div>
   <button type="submit" class="btn btn-success">還原網址</button>
-</form>
+</form> --}}
