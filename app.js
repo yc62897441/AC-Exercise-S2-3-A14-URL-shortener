@@ -3,7 +3,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 
-const db = require('./config/mongoose')
+require('./config/mongoose')
 
 // 伺服器參數
 const app = express()

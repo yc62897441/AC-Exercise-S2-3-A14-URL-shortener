@@ -1,17 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-const urlRecord = require('../../models/urlRecord')
-
-// home
-router.get('/', (req, res) => {
-  res.render('index')
-})
+const UrlRecord = require('../../models/urlRecord')
 
 // redirect
 router.get('/:id', (req, res) => {
   const shortURL = req.params.id
-  urlRecord.find()
+  UrlRecord.find()
     .lean()
     .then(records => {
       try {
