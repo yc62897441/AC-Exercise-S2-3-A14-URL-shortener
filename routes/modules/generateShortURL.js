@@ -18,10 +18,9 @@ router.post('/', (req, res) => {
   // 取得使用者輸入之原始網址
   const longURL = req.body.longURL
   // 取得網頁應用程式的網域網址
-  let mainURL = ''
   const reqHeadersReferer = req.headers.referer
   const reqHeadersRefererArray = reqHeadersReferer.split('/')
-  mainURL = reqHeadersRefererArray[0] + '//' + reqHeadersRefererArray[2] + '/redirectToLongURL/'
+  const mainURL = reqHeadersRefererArray[0] + '//' + reqHeadersRefererArray[2] + '/redirectToLongURL/'
 
   // 讀取資料庫資料
   UrlRecord.find()
